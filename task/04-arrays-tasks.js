@@ -288,7 +288,9 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-	var ans = arr.filter(item => arr.indexOf(item) % 2 == 1);
+	var ans = arr.filter(function(item) { 
+		return arr.indexOf(item) % 2 == 1;
+	});
 	return ans;
 }
 
@@ -334,7 +336,9 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-	var ans = arr.sort((a, b) => b - a);
+	var ans = arr.sort(function(a, b) {
+		return b - a;
+	});
 	return ans.splice(0, 3);
 }
  
@@ -440,7 +444,9 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-	var ans = arr.filter(x => x === item);
+	var ans = arr.filter(function(x) { 
+		return x === item;
+	});
 	return ans.length;
 }
 
@@ -518,8 +524,9 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
+	var row;
 	var ans = Array.from( {length: n}, (_, idx) => {
-       let row = new Array(n).fill(0);
+       row = new Array(n).fill(0);
        row[idx] = 1;
        return row;
     });
@@ -625,8 +632,7 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-	var ans = arr.reduce((prev, curr) => prev.concat(childrenSelector(curr)), []);
-	return ans;
+	throw new Error('Not implemented');
 }
 
 
@@ -667,10 +673,10 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-	let len = arr.length;
-    let half = Math.floor(len / 2);
-    let head = arr.splice(0, half);
-    let tail = arr.splice(len % 2 ? 1 : 0);
+	var len = arr.length;
+    var half = Math.floor(len / 2);
+    var head = arr.splice(0, half);
+    var tail = arr.splice(len % 2 ? 1 : 0);
     return tail.concat(arr).concat(head);
 }
 
